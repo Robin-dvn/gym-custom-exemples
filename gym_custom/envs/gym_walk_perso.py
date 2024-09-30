@@ -56,7 +56,7 @@ class GymWalk(gym.Env):
             if self.agent_location == 6:
                 reward = 1
             else:
-                reward = -1
+                reward = 0
         
         observation = self._get_obs()
         info = self._get_info()
