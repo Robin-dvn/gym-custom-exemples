@@ -134,7 +134,7 @@ class GymWalk19(gym.Env):
     metadata = {"render_modes": ["human","rgb_array"],"render_fps":1}
 
     def __init__(self,render_mode=None):
-        self.window_size = 800
+        self.window_size = 512
         self.observation_space = spaces.Discrete(21,start=0)
         self.action_space = spaces.Discrete(2)
 
