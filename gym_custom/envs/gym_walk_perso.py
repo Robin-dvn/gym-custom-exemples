@@ -11,6 +11,13 @@ class GymWalk(gym.Env):
         self.window_size = 512
         assert render_mode is None or render_mode in self.metadata["render_modes"]
         self.render_mode = render_mode
+        self.observation_space = spaces.Discrete(7,start=0)
+        self.action_space = spaces.Discrete(2)
+
+        self._action_to_direction = {
+            0: -1,
+            1: 1,
+        }
 
         self.window = None
         self.clock = None
