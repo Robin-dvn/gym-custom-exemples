@@ -4,7 +4,7 @@ import numpy as np
 import pygame
 
 class GridWorld(gym.Env):
-    metadata = {"render_mode":["human"],"render_fps":4}
+    metadata = {"render_modes":["human"],"render_fps":4}
 
     def __init__(self,size=5, render_mode=None):
         self.window_size = 512
