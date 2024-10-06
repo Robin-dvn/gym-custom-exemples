@@ -8,7 +8,7 @@ class GridWorld(gym.Env):
 
     def __init__(self,size=5, render_mode=None):
         self.window_size = 512
-        assert render_mode is None or render_mode in self.metadata["render_mode"]
+        assert render_mode is None or render_mode in self.metadata["render_modes"]
         self.render_mode = render_mode
 
         self.size = size
