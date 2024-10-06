@@ -10,3 +10,9 @@ register(
      entry_point="gym_custom.envs:GymWalk19",
      max_episode_steps=300,
 )
+register(
+    id="GridWorld-v0",
+    entry_point="gym_custom.envs:GridWorld",
+    max_episode_steps=300
+
+)
