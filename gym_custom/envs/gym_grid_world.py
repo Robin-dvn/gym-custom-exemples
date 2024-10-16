@@ -50,7 +50,7 @@ class GridWorld(gym.Env):
 
 
     def _get_obs(self):
-        return  (pos_to_indice(self._agent_location),pos_to_indice(self._target_location))
+        return  (pos_to_indice(self._agent_location,self.size),pos_to_indice(self._target_location,self.size))
     
     def _get_info(self):
         return {"d": 2}
