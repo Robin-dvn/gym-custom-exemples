@@ -2,7 +2,11 @@ import gymnasium as gym
 from gymnasium import spaces
 import numpy as np
 import pygame
-
+class Actions(Enum):
+    RIGHT = 0
+    UP = 1
+    LEFT = 2
+    DOWN = 3
 class GridWorld(gym.Env):
     metadata = {"render_modes":["human"],"render_fps":4}
 
@@ -18,14 +22,16 @@ class GridWorld(gym.Env):
                 "target": spaces.Box(0,size-1,shape=(2,),dtype=int)
             }
         )
+        self._agent_location = np.array([-1, -1], dtype=int)
+        self._target_location = np.array([-1, -1], dtype=int)
 
         self.action_space = spaces.Discrete(4)
 
         self._action_to_direction = {
-            0 : np.array([1,0]),
-            1 : np.array([0,1]),
-            2 : np.array([-1,0]),
-            3 : np.array([0,-1])
+            Actions.RIGHT.value: np.array([1, 0]),
+            Actions.UP.value: np.array([0, 1]),
+            Actions.LEFT.value: np.array([-1, 0]),
+            Actions.DOWN.value: np.array([0, -1]),
         }
 
         self.window = None
@@ -34,7 +40,7 @@ class GridWorld(gym.Env):
 
 
     def _get_obs(self):
-        return  spaces.Dict({"agent" : self._agent_location, "target": self._target_location})
+        return  {"agent": self._agent_location, "target": self._target_location}
     
     def _get_info(self):
         return 2
