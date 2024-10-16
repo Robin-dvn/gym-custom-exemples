@@ -78,7 +78,7 @@ class GridWorld(gym.Env):
     
     def step(self,action):
 
-        direction = self._action_to_direction(action)
+        direction = self._action_to_direction[action]
 
         self._agent_location += direction
 
