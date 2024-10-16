@@ -56,7 +56,7 @@ class GridWorld(gym.Env):
         return {"d": 2}
     
 
-    def reset(self, seed):
+    def reset(self, seed=None):
         super().reset(seed=seed)
 
 
