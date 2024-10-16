@@ -45,7 +45,7 @@ class GridWorld(gym.Env):
         return  {"agent": self._agent_location, "target": self._target_location}
     
     def _get_info(self):
-        return 2
+        return {"d": 2}
     
 
     def reset(self, seed):
