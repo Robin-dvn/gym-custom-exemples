@@ -9,7 +9,7 @@ def pos_to_indice(pos,n):
     x = pos[0]
     y = pos[1]
     i = x*n + y
-    return y
+    return i
 
 def indice_to_pos(i,n):
     x = i // n
