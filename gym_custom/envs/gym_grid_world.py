@@ -4,6 +4,19 @@ import numpy as np
 import pygame
 from enum import Enum
 
+
+def pos_to_indice(pos,n):
+    x = pos[0]
+    y = pos[1]
+    i = x*n + y
+    return y
+
+def indice_to_pos(i,n):
+    x = i // n
+    y = i % n
+    return (x,y)
+
+
 class Actions(Enum):
     RIGHT = 0
     UP = 1
@@ -18,12 +31,7 @@ class GridWorld(gym.Env):
         self.render_mode = render_mode
 
         self.size = size
-        self.observation_space = spaces.Dict(
-            {
-                "agent": spaces.Box(0,size-1,shape=(2,),dtype=int),
-                "target": spaces.Box(0,size-1,shape=(2,),dtype=int)
-            }
-        )
+        self.observation_space = spaces.Tuple((spaces.Discrete(25),spaces.Discrete(25)))
         self._agent_location = np.array([-1, -1], dtype=int)
         self._target_location = np.array([-1, -1], dtype=int)
 
@@ -42,7 +50,7 @@ class GridWorld(gym.Env):
 
 
     def _get_obs(self):
-        return  {"agent": self._agent_location, "target": self._target_location}
+        return  (pos_to_indice(self._agent_location),pos_to_indice(self._target_location))
     
     def _get_info(self):
         return {"d": 2}
