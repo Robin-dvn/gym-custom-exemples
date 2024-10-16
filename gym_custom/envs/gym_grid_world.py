@@ -34,7 +34,7 @@ class GridWorld(gym.Env):
 
 
     def _get_obs(self):
-        return  {"agent" : self._agent_location, "target": self._target_location}
+        return  spaces.Dict({"agent" : self._agent_location, "target": self._target_location})
     
     def _get_info(self):
         return 2
