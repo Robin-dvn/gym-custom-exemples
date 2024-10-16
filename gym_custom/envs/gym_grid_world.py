@@ -59,14 +59,11 @@ class GridWorld(gym.Env):
     def reset(self, seed=None,options=None):
         super().reset(seed=seed)
 
+        self._target_location = np.array([self.size-1,self.size-1])
+        self._agent_location = self.np_random.integers(0,self.size,size = 2,dtype=int)
+        while np.array_equal(self._agent_location,self._target_location):
+            self._agent_location =  self.np_random.integers(0, self.size, size=2, dtype=int)
 
-        self._agent_location =  self.np_random.integers(0, self.size, size=2, dtype=int)
-
-        self._target_location =  self._agent_location
-        while np.array_equal(self._target_location, self._agent_location):
-            self._target_location = self.np_random.integers(
-                0, self.size, size=2, dtype=int
-            )
 
         if self.render_mode == "human":
             self._render_frame()
