@@ -2,6 +2,8 @@ import gymnasium as gym
 from gymnasium import spaces
 import numpy as np
 import pygame
+from enum import Enum
+
 class Actions(Enum):
     RIGHT = 0
     UP = 1
