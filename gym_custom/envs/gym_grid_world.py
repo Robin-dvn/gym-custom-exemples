@@ -80,7 +80,7 @@ class GridWorld(gym.Env):
 
         direction = self._action_to_direction[action]
 
-        self._agent_location += direction
+        self._agent_location  = np.clip(self._agent_location+direction,0,self.size-1)
 
         terminated = np.array_equal(self._agent_location, self._target_location)
         reward = 1 if terminated else 0  # Binary sparse rewards
